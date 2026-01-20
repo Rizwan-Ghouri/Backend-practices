@@ -2,9 +2,13 @@ import express from "express";
 import dotenv from "dotenv";
 // import comments from "./comment.js";
 import productsRoutes from "./routes/productsRoute.js";
+import usersRoute from "./routes/usersRoute.js";
+import cors from "cors";
+import authRoute from "./routes/authRoute.js";
 
 const app = express();
 dotenv.config();
+app.use(cors());
 
 const PORT = process.env.PORT;
 
@@ -13,6 +17,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/products",productsRoutes);
+app.use('/users',usersRoute);
+app.use('/auth',authRoute);
 
 
 // app.get("/profile", (req, res) => {
